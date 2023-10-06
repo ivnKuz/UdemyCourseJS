@@ -8,7 +8,8 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
-const openModal = function () {
+const openModal = function (e) {
+  e.preventDefault()
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
@@ -18,14 +19,55 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
-for (let i = 0; i < btnsOpenModal.length; i++)
-  btnsOpenModal[i].addEventListener('click', openModal);
+//adding open modal to upper button and button below the page
+btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
+
+//adding close modal on the document and esc button
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
   }
 });
+
+const header = document.querySelector('.header');
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+message.innerHTML = 'We use cookies for impoved functionality and analytics. <button class="btn btn--close-cookie">Got it! </button> '
+
+header.append(message)
+
+document.querySelector('.btn--close-cookie').
+addEventListener('click', ()=>{
+  message.remove();
+  // message.parentElement.removeChild(message);
+})
+
+message.style.backgroundColor = '#37383d'
+message.style.width = '120%'
+console.log();
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function(e){
+  const s1coords = section1.getBoundingClientRect();
+  // console.log(s1coords);
+  // console.log(e.target.getBoundingClientRect());
+  // console.log('Current scroll (X/Y)', window.pageXOffset, pageYOffset);
+  // console.log('heigh/width viewport', document.documentElement.clientHeight, document.documentElement.clientWidth);
+  //scrolling
+  // window.scrollTo(s1coords.left, s1coords.top + window.pageYOffset)
+  //adding smooth animation
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth'
+
+  // });
+  //same as 2 above lol, can not work in older browsers tho, note.
+  section1.scrollIntoView({behavior: 'smooth'})
+})
