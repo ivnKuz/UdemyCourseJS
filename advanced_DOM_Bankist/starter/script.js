@@ -98,9 +98,21 @@ btnScrollTo.addEventListener('click', function(e){
     
   // }
 
-
-  const randomInt = (min, max) => Math.floor(Math.random()* (max-min +1) + min);
-  const randomColor = () => `rgb(${randomInt(0,255)},${randomInt(0,255)},${randomInt(0,255)})`;
+//BUBBLING IN PRACTICE
+  // const randomInt = (min, max) => Math.floor(Math.random()* (max-min +1) + min);
+  // const randomColor = () => `rgb(${randomInt(0,255)},${randomInt(0,255)},${randomInt(0,255)})`;
  
-  
-  
+  // document.querySelector('.nav__link').addEventListener('click', function(e){
+  //   this.style.backgroundColor = randomColor()
+  //   //can stop event bubble effect to the parent elements
+  //   console.log(e.currentTarget === this); //true
+    
+  //   e.stopPropagation() //in practice not good idea to use
+  // })
+  // document.querySelector('.nav__links').addEventListener('click', function(e){
+  //   this.style.backgroundColor = randomColor()
+    
+  // })
+  // document.querySelector('.nav').addEventListener('click', function(e){
+  //   this.style.backgroundColor = randomColor()
+  // })
