@@ -1,5 +1,5 @@
 'use strict';
-
+//_______PROJECT CODE_________
 ///////////////////////////////////////
 // Modal window
 
@@ -32,6 +32,8 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+//////////////////
+//button scrolling & "cookies"
 
 const header = document.querySelector('.header');
 const message = document.createElement('div');
@@ -59,6 +61,36 @@ btnScrollTo.addEventListener('click', function(e){
 })
 
 
+///////////////////////
+//Page navigation
+//this technique is fine for few elements, but if we would use for each and add events to a lot of elements that would affect 
+// performance
+// document.querySelectorAll('.nav__link').forEach(function(el){
+//   el.addEventListener('click', function(e){
+//     e.preventDefault();
+//     //getting the attribute ancor from html
+//     const id = this.getAttribute('href');
+//     //passing it as id to add smooth scrolling
+//     document.querySelector(id).scrollIntoView({behavior: 'smooth'})
+    
+//   })
+// })
+
+// 1. Add event listener to common parent element
+// 2. determine what element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function(e){
+  e.preventDefault()
+  console.log(e.target);
+  //matching strategy
+  //ignore clicks that do not come from one of the links
+  if(e.target.classList.contains('nav__link')){
+    console.log('link');
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({behavior: 'smooth'})
+  }
+})
+
 
 
 
@@ -82,16 +114,16 @@ btnScrollTo.addEventListener('click', function(e){
   //same as 2 above lol, can not work in older browsers tho, note.
 
   //______EVENTS_______
-  const h1 = document.querySelector('h1')
-  //delete event
-  //can remove it if moved to the separate function
-  const logH1 = function(e){
-    console.log('AddEventListener: Mouse entered');
-    // h1.removeEventListener('mouseenter', logH1)
-  }
-  h1.addEventListener('mouseenter', logH1)
-  // 
-  setTimeout(() => h1.removeEventListener('mouseenter', logH1), 3000);
+  // const h1 = document.querySelector('h1')
+  // //delete event
+  // //can remove it if moved to the separate function
+  // const logH1 = function(e){
+  //   console.log('AddEventListener: Mouse entered');
+  //   // h1.removeEventListener('mouseenter', logH1)
+  // }
+  // h1.addEventListener('mouseenter', logH1)
+  // // 
+  // setTimeout(() => h1.removeEventListener('mouseenter', logH1), 3000);
 //can do the same with attr function
   // h1.onmouseenter = function(e){
   //   console.log('AddEventListener: Mouse entered hiya');
