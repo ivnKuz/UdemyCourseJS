@@ -91,6 +91,30 @@ document.querySelector('.nav__links').addEventListener('click', function(e){
   }
 })
 
+//////////
+//tabbed component
+const tabs = document.querySelectorAll('.operations__tab')
+const tabsContainer = document.querySelector('.operations__tab-container')
+const tabsContent = document.querySelectorAll('.operations__content')
+
+tabsContainer.addEventListener('click', function(e){
+  //selects the closest element with .operation_tab
+  const clicked = e.target.closest('.operations__tab');
+  console.log(clicked);
+  //check if we clicked the button or not with class .operations__tab
+  if(!clicked) return;
+  //active tab
+  //remove active classes
+  tabs.forEach(tabs => tabs.classList.remove('operations__tab--active'))
+  tabsContent.forEach(content => content.classList.remove('operations__content--active'))
+  //add active classes
+  clicked.classList.add('operations__tab--active');
+  console.log(clicked.dataset.tab);
+  
+  //active content area
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active')
+})
+
 
 
 
