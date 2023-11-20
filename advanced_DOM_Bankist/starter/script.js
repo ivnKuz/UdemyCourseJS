@@ -119,7 +119,6 @@ tabsContainer.addEventListener('click', function(e){
 
 
 //learning material
-
   //________SCROLING________
   //from btnScrollTo event listener
   // console.log(s1coords);
