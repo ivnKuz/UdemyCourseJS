@@ -72,7 +72,6 @@ btnScrollTo.addEventListener('click', function(e){
 //     const id = this.getAttribute('href');
 //     //passing it as id to add smooth scrolling
 //     document.querySelector(id).scrollIntoView({behavior: 'smooth'})
-    
 //   })
 // })
 
